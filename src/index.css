@@ -1,0 +1,510 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body
+{
+    color: #808080; 
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #561234;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #123456;
+    border-radius: 10px;
+}
+
+@keyframes animate-neon {
+    0% {
+      opacity: 0;
+      transform: scale(0);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.2);
+      box-shadow: 0 0 10px 2px rgba(255, 0, 0, 0.7);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+
+@layer components {
+
+    /* AppHeader */
+
+    ._header {
+        @apply
+        p-[2rem]
+        fixed top-0 right-0 left-0
+        bg-[#00000040] shadow-[inset_0_0_5rem_0_#123456] 
+        border-[#000000] border-[.1rem] rounded-[2rem]
+        backdrop-blur-[.3rem] z-[100]
+    }
+
+    ._header-active {
+        @apply
+        flex flex-col items-center justify-start gap-[1rem]
+        relative ml-[4rem] 
+        text-[#ffffff] 
+        before:content-[''] before:absolute before:top-[0] before:left-[-2rem] before:right-[0] before:bottom-[0] before:p-[1.5rem] before:w-full before:h-full before:skew-x-[340deg] before:border-l-[.1rem] before:border-[#ffffff40] before:pointer-events-none
+    }
+
+    ._header-hover {
+        @apply
+        flex flex-col items-center justify-start gap-[1rem]
+        relative ml-[4rem] 
+        duration-[.5s]
+        hover:text-[#ffffff]
+        before:content-[''] before:absolute before:top-[0] before:left-[-2rem] before:right-[0] before:bottom-[0] before:p-[1.5rem] before:w-full before:h-full before:skew-x-[340deg] before:border-l-[.1rem] before:border-[#ffffff40] before:pointer-events-none 
+    }
+
+    ._header-active-mobile {
+        @apply
+        flex gap-[1rem]
+        text-[#ffffff] 
+    }
+
+    ._header-hover-mobile {
+        @apply
+        flex gap-[1rem]
+        duration-[.5s]
+        hover:text-[#ffffff]
+    }
+
+    ._header-icon {
+        @apply
+        font-['Material_Icons'] text-xl leading-none 
+    }
+
+    ._header-text {
+        @apply
+        max-w-[8rem]
+        text-center font-bold truncate
+    }
+
+    /* AppFooter */
+
+    ._footer {
+        @apply 
+        p-[2rem]
+        bg-[#00000040] shadow-[inset_0_0_5rem_0_#123456]
+        border-[#000000] border-[.1rem] rounded-[2rem]
+        backdrop-blur-[.3rem]
+    }
+
+    ._footer-title {
+        @apply
+        mb-[1rem] 
+        text-[#ffffff] font-bold
+    }
+
+    ._footer-active {
+        @apply
+        text-[#ffffff]
+    }
+
+    ._footer-hover {
+        @apply
+        duration-[.5s]
+        hover:text-[#ffffff]
+    }
+
+    ._footer-bold {
+        @apply
+        font-bold
+    }
+
+    ._footer-icon {
+        @apply 
+        p-[1rem] 
+        font-['Material_Icons'] text-xl leading-none 
+        bg-transparent shadow-[inset_0_0_1rem_0_#ffffff40] 
+        border-[#ffffff40] border-[.1rem] rounded-[50%] 
+        duration-[.5s] cursor-pointer 
+        hover:text-[#ffffff]
+    }
+
+    /* FormLogin */
+
+    ._form {
+        @apply
+        flex flex-col items-center gap-[2rem] 
+        m-auto p-[2rem] w-full max-w-[30rem] 
+        bg-[#00000040] shadow-[inset_0_0_5rem_0_#ffffff40] 
+        border-[#000000] border-[.1rem] rounded-[2rem]
+        backdrop-blur-[.3rem]
+    }
+
+    ._form-title {
+        @apply
+        text-[#ffffff] text-xl font-bold
+    }
+
+    ._form-error {
+        @apply
+        text-[#ed143d]
+    }
+
+    ._form-link {
+        @apply
+        duration-[.5s] 
+        hover:text-[#ffffff]
+    }
+
+    ._form-link-blue {
+        @apply
+        w-[12rem] p-[1rem]
+        shadow-[inset_0_0_5rem_0_#123456]
+        text-center 
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+        duration-[.5s]
+        hover:text-[#ffffff]
+    }
+
+    ._form-link-blue-active {
+        @apply
+        w-[12rem] p-[1rem]
+        shadow-[inset_0_0_5rem_0_#123456]
+        text-[#ffffff] text-center 
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+    }
+
+    ._form-link-pink {
+        @apply
+        w-[12rem] p-[1rem]
+        shadow-[inset_0_0_5rem_0_#561234]
+        text-center 
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+        duration-[.5s]
+        hover:text-[#ffffff]
+    }
+
+    ._form-link-pink-active {
+        @apply
+        w-[12rem] p-[1rem]
+        shadow-[inset_0_0_5rem_0_#561234]
+        text-[#ffffff] text-center 
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+    }
+
+    /* Input */
+
+    ._input {
+        @apply
+        p-[.7rem] w-[20rem]
+        bg-transparent shadow-[inset_0_0_1rem_0_#123456] 
+        border-[#123456] border-[.1rem] rounded-[1rem] 
+        duration-[.5s] outline-none 
+        focus:shadow-[inset_0_0_1rem_0_#561234] focus:border-[#561234]
+    }
+
+    ._input-label {
+        @apply
+        absolute p-[.7rem] left-[0] 
+        duration-[.5s] pointer-events-none 
+        peer-focus:text-[#ffffff] peer-focus:translate-y-[-40px] 
+        peer-valid:text-[#ffffff] peer-valid:translate-y-[-40px]
+    }
+
+    ._input-label-read {
+        @apply
+        absolute p-[.7rem] left-[0] 
+        duration-[.5s] pointer-events-none 
+        text-[#ffffff] translate-y-[-40px] 
+    }
+
+    ._input-error {
+        @apply
+        absolute top-[3.3rem] right-[0] 
+        text-[#ed143d]
+    }
+
+    /* Button */
+
+    ._button-pink {
+        @apply
+        p-[1rem] w-full 
+        bg-transparent shadow-[inset_0_0_5rem_0_#561234]
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+        duration-[.5s] 
+        hover:text-[#ffffff]
+    }
+
+    ._button-white {
+        @apply
+        p-[1rem] w-full 
+        bg-transparent shadow-[inset_0_0_5rem_0_#ffffff40]
+        border-[#000000] border-[.1rem] rounded-[1rem] 
+        duration-[.5s] 
+        hover:text-[#ffffff]
+    }
+
+    ._button-print {
+        @apply
+        w-[50px] p-[.5rem] ml-[2rem]
+        bg-[#00000040] shadow-[inset_0_0_.5rem_0_#123456] 
+        text-[#ffffff] 
+        border-[#123456] border-[.1rem] rounded-[50%] 
+        duration-[.5s] 
+        hover:shadow-[inset_0_0_.5rem_0_#561234] hover:border-[#561234]
+    }
+
+    ._button-cart-pink-block {
+        @apply
+        block w-[300px] text-center p-[13px] m-auto border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#561234] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-pink {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#561234] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-pink2 {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#ea5455] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-black {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#000000] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-green {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#28c76f] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-black {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#ed143d] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-pink {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#FF69B4] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-orange {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#de8d43] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-lred {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#ea5455] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-white {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#ffffff] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-menu-blue {
+        @apply
+        w-[300px] text-center p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#123456] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-blue {
+        @apply
+        w-[300px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#123456] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-red {
+        @apply
+        w-[300px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#ed143d] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+
+    ._button-cart-smallblue {
+        @apply
+        w-[100px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#123456] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+    
+    ._button-cart-smallpink {
+        @apply
+        w-[100px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#561234] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-input {
+        @apply
+        w-[300px] p-[12px] bg-[#00000040] border-[2px] border-solid border-[#123456] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#123456] outline-none focus:shadow-[inset_0_0_1rem_0_#561234] focus:border-[2px] focus:border-solid focus:border-[#561234]
+    }
+
+    ._button-task-input {
+        @apply
+        w-[300px] p-[12px] bg-[#00000040] border-[2px] border-solid border-[#123456] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#123456] outline-none focus:shadow-[inset_0_0_1rem_0_#561234] focus:border-[2px] focus:border-solid focus:border-[#561234]
+    }
+
+    ._button-cart-smallinput {
+        @apply
+        w-[100px] p-[12px] bg-[#00000040] text-center border-[2px] border-solid border-[#123456] rounded-[10px] duration-[.5s] shadow-[inset_0_0_1rem_0_#123456] outline-none focus:shadow-[inset_0_0_1rem_0_#561234] focus:border-[2px] focus:border-solid focus:border-[#561234]
+    }
+    
+    ._button-cart-white {
+        @apply
+        w-[300px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#ffffff40] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    ._button-cart-green {
+        @apply
+        w-[300px] p-[13px] border-[1px] border-[#000000] rounded-[10px] duration-[.5s] shadow-[inset_0_0_5rem_0_#28c76f40] backdrop-blur-[5px] hover:text-[#ffffff]
+    }
+
+    /* Nav */
+
+    ._nav {
+        @apply
+        flex flex-col gap-[2rem] 
+        p-[2rem] w-[20rem]
+        fixed top-[9.4rem] left-[0] bottom-[0] 
+        bg-[#00000040] shadow-[inset_0_0_5rem_0_#561234] 
+        border-[#000000] border-[.1rem] rounded-[2rem]
+        backdrop-blur-[.3rem] z-[100] overflow-auto
+    }
+
+    /* Link */
+
+    ._link {
+        @apply
+        duration-[.5s] hover:text-[#ffffff]
+    }
+
+    ._link-active {
+        @apply
+        text-[#ffffff]
+    }
+
+     /* Text */
+
+     ._text-discounts {
+        @apply
+        font-bold
+     }
+
+     ._text-discounts-white {
+        @apply
+        font-bold text-[#ffffff]
+     }
+
+     ._text-documents-200 {
+        @apply
+        w-[200px] font-bold mr-[2rem]
+     }
+
+     ._text-documents-80 {
+        @apply
+        w-[80px] font-bold mr-[2rem]
+     }
+
+     ._text-documents-80-none {
+        @apply
+        w-[80px] mr-[2rem]
+     }
+
+     ._text-documents {
+        @apply
+        text-[#ffffff] font-bold ml-[2rem]
+     }
+
+     /* Print */
+
+     ._print-text-bold {
+        @apply
+        text-center font-bold
+     }
+
+     ._print-text-title {
+        @apply
+        w-[100%] bg-[lightgray] truncate text-center
+     }
+
+     ._print-text {
+        @apply
+        text-center truncate
+     }
+
+     ._print-text-left {
+        @apply
+        text-left truncate
+     }
+
+     ._print-text-120 {
+        @apply
+        w-[12rem] truncate text-center
+     }
+
+     ._print-text-mr {
+        @apply
+        text-center truncate mr-[1rem]
+     }
+
+     /* Item */
+
+     ._item-title {
+        @apply
+        font-bold text-[#ffffff]
+     }
+
+     ._item-param {
+        @apply
+        w-[100px]
+     }
+
+     ._item-param-result {
+        @apply
+        font-bold w-[135px] truncate
+     }
+
+     ._item-price-title {
+        @apply
+        text-center w-[140px]
+     }
+
+     ._item-price {
+        @apply
+        font-bold w-[140px] truncate
+     }
+
+     ._item-price-italic {
+        @apply
+        font-bold w-[140px] truncate italic
+     }
+
+     ._item-price-active {
+        @apply
+        font-bold w-[140px] truncate text-[#ffffff]
+     }
+
+     ._item-price-italic-active {
+        @apply
+        font-bold w-[140px] truncate italic text-[#ffffff]
+     }
+
+     ._item-icon {
+        @apply
+        font-['Material_Icons'] text-[2rem] leading-none cursor-pointer
+     }
+
+     /* Pagination */
+
+     ._pagination {
+        @apply
+        hover:text-[#ffffff] duration-[.5s] font-bold cursor-pointer
+     }
+
+     ._pagination-active {
+        @apply
+        text-[#ffffff] hover:text-[#ffffff] duration-[.5s] font-bold cursor-pointer
+     }
+}
